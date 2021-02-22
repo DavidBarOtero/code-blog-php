@@ -31,6 +31,10 @@ body{
 
 
 }
+.description{
+    width:780px;
+    height:157px;   
+}
 
 #logo a{
     font-family: Helvetica;
@@ -98,6 +102,7 @@ body{
     float: right;
     width: 25%;
     height: auto;
+    margin-right: 10px;
 
 }
 #main{
@@ -129,7 +134,7 @@ body{
 }
 
 #main p{
-    margin-top: 8px;
+    margin: 12px;
 
 }
 
@@ -234,6 +239,7 @@ input[type="button"],input[type="submit"]{
 }
 
 .error-alert{
+    margin-top: 15px;
     padding: 5px;
     font-size: 14px;
     color:white;
@@ -294,3 +300,4 @@ input[type="button"],input[type="submit"]{
     text-align: center;
 
 }
+

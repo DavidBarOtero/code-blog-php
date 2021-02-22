@@ -29,7 +29,7 @@
                     </li>
             <?php  while($category= mysqli_fetch_assoc($categories)):  ?>
              <li>
-                        <a href="index.php"><?= $category['name']?></a>
+                 <a href="category.php?id=<?=$category['id']?>"><?= $category['name']?></a>
                     </li>
             <?php endwhile; ?>
                        <li>

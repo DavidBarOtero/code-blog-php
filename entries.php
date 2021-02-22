@@ -8,10 +8,9 @@
 
     <div id="main">
 
-        <h1>Last posts</h1>
+        <h1>All posts</h1>
         <?php
-        $posts = get_all_posts($db,true,null);
- 
+        $posts = get_all_posts($db,null,null);
 
         if (!empty($posts)):
             while ($post = mysqli_fetch_assoc($posts)):
@@ -29,7 +28,7 @@
         endif;
         ?>
         <div id="see-all">
-            <a href="entries.php">
+             <a href="entries.php">
                 See all posts
             </a>
 

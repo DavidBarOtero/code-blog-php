@@ -31,17 +31,44 @@ function get_categories($connection) {
 
     return $result;
 }
+function get_category($connection,$id) {
 
-function get_last_posts($connection) {
+    $sql = "SELECT * FROM categories where id=$id ORDER BY id ASC";
 
-    $sql = "SELECT * from posts INNER JOIN categories ON posts.category_id=categories.id ";
-   $posts= mysqli_query($connection, $sql);
+    $categories = mysqli_query($connection, $sql);
+    $result = array();
 
-$result=array();
-if($posts ){
-    
-$result=$posts;    
-    
+    if ($categories) {
+        $result = mysqli_fetch_assoc($categories);
+    }
+
+
+    return $result;
 }
-return $result;
+function get_all_posts($connection, $limit = null,$category=null) {
+
+    $sql = "SELECT * from posts INNER JOIN categories ON posts.category_id=categories.id  ";
+    
+    if($category!=null){
+        
+        $sql .="WHERE posts.category_id='$category'";
+   
+    }
+    $sql .="ORDER BY posts.id DESC";
+    if ($limit) {
+
+        $sql .= " LIMIT 4";
+    }
+  
+    
+   
+    
+    $posts = mysqli_query($connection, $sql);
+
+    $result = array();
+    if ($posts) {
+
+        $result = $posts;
+    }
+    return $result;
 }

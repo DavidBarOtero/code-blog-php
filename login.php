@@ -15,14 +15,16 @@ if (isset($_POST)) {
     if ($login) {
 
         $user = mysqli_fetch_assoc($login);
-  var_dump($user);
+  
         $verify = password_verify($password, $user['password']);
-     
+        
+        
  
           
-        if ($verify) {
+            if ($verify) {
 
             $_SESSION['user'] = $user;
+            $_SESSION['user-id']=$user['id'];
         } else {
 
             $_SESSION['login-error'] = "Login error!!";
