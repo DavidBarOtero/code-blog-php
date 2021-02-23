@@ -31,7 +31,8 @@ function get_categories($connection) {
 
     return $result;
 }
-function get_category($connection,$id) {
+
+function get_category($connection, $id) {
 
     $sql = "SELECT * FROM categories where id=$id ORDER BY id ASC";
 
@@ -45,24 +46,23 @@ function get_category($connection,$id) {
 
     return $result;
 }
-function get_all_posts($connection, $limit = null,$category=null) {
 
-    $sql = "SELECT * from posts INNER JOIN categories ON posts.category_id=categories.id  ";
-    
-    if($category!=null){
-        
-        $sql .="WHERE posts.category_id='$category'";
-   
+function get_all_posts($connection, $limit = null, $category = null) {
+
+    //$sql = "SELECT * from posts  INNER JOIN categories ON posts.category_id=categories.id  ";
+    $sql = "SELECT e.*,c.name AS 'category' FROM posts e" .
+            " INNER JOIN categories c on e.category_id=c.id";
+
+    if ($category != null) {
+
+        $sql .= " WHERE e.category_id='$category'";
     }
-    $sql .="ORDER BY posts.id DESC";
+    $sql .= " ORDER BY e.id DESC";
     if ($limit) {
 
         $sql .= " LIMIT 4";
     }
-  
-    
-   
-    
+
     $posts = mysqli_query($connection, $sql);
 
     $result = array();
@@ -70,5 +70,23 @@ function get_all_posts($connection, $limit = null,$category=null) {
 
         $result = $posts;
     }
+    return $result;
+}
+
+function detail_post($connection, $id) {
+    $sql="SELECT e.*,c.name AS 'category',CONCAT(u.name,' ',u.last_name)AS 'user' FROM posts e ".
+            "INNER JOIN categories c ON e.category_id=c.id ".
+            "INNER JOIN users u ON e.user_id=u.id ".
+            "WHERE e.id=$id";
+    
+    $post = mysqli_query($connection, $sql);
+
+
+    $result = array();
+    if ($post && mysqli_num_rows($post) >= 1) {
+        $result = mysqli_fetch_assoc($post);
+    }
+
+
     return $result;
 }

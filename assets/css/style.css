@@ -254,12 +254,12 @@ input[type="button"],input[type="submit"]{
     display:block;
     border-radius: 2px;
     padding:7px;
-    color:white;
+  
     background: greenyellow;
     border : 1px solid #156785;
     cursor: pointer;
     text-align: center;
-
+    color:white!important;
 }
 .blue-button{
     margin-top: 2px;
@@ -267,12 +267,12 @@ input[type="button"],input[type="submit"]{
     display:block;
     border-radius: 2px;
     padding:7px;
-    color:white;
+ 
     background: #0099cc;
     border : 1px solid #156785;
     cursor: pointer;
     text-align: center;
-
+    color:white !important;
 }
 .orange-button{
     margin-top: 2px;
@@ -280,7 +280,7 @@ input[type="button"],input[type="submit"]{
     display:block;
     border-radius: 2px;
     padding:7px;
-    color:white;
+    color:white !important;
     background: orange;
     border : 1px solid #156785;
     cursor: pointer;
@@ -293,11 +293,11 @@ input[type="button"],input[type="submit"]{
     display:block;
     border-radius: 2px;
     padding:7px;
-    color:white;
+   
     background: red;
     border : 1px solid #156785;
     cursor: pointer;
     text-align: center;
-
+    color:white !important;
 }
 

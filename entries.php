@@ -15,10 +15,11 @@
         if (!empty($posts)):
             while ($post = mysqli_fetch_assoc($posts)):
                 ?>
+        
                 <article class="entry_posts">
-                    <a href="">
+                    <a href="post-details.php?id=<?=$post['id']?>">
                         <h2><?= $post['title'] ?> </h2>
-                        <span class="date_last_posts"><?= $post['name'].' | '.$post['date']?> </span>   
+                        <span class="date_last_posts"><?= $post['category'].' | '.$post['date']?> </span>   
                
                         <p><?= substr($post['description'], 0, 180) . "..." ?> </p>
                     </a>
