@@ -47,7 +47,7 @@ function get_category($connection, $id) {
     return $result;
 }
 
-function get_all_posts($connection, $limit = null, $category = null) {
+function get_all_posts($connection, $limit = null, $category = null,$find=null) {
 
     //$sql = "SELECT * from posts  INNER JOIN categories ON posts.category_id=categories.id  ";
     $sql = "SELECT e.*,c.name AS 'category' FROM posts e" .
@@ -56,6 +56,10 @@ function get_all_posts($connection, $limit = null, $category = null) {
     if ($category != null) {
 
         $sql .= " WHERE e.category_id='$category'";
+    }
+      if ($find != null) {
+
+        $sql .= " WHERE e.title like'%$find%'";
     }
     $sql .= " ORDER BY e.id DESC";
     if ($limit) {
@@ -90,3 +94,4 @@ function detail_post($connection, $id) {
 
     return $result;
 }
+

@@ -2,7 +2,13 @@
 
 
 <aside id="sidebar">
-
+  <div id="finder" class="block-aside">
+            <h3>Finder</h3>
+            <form action="finder.php" method="POST" enctype="multipart/form-data">
+        <input type="text" name="search"/>
+        <input type="submit" value="find">
+            </form>
+        </div>
     <?php if (isset($_SESSION['user'])): ?>
         <div id="logued-user" class="block-aside">
             <h3>Wellcome,<?= $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'] ?></h3>
