@@ -5,26 +5,21 @@
 if (!isset($_POST['search'])) {
     header('locatin:index.php');
 }
-
-
-
-
 ?>
 
-
 <div id="container">
-<?php require_once'includes/aside.php' ?>
+    <?php require_once'includes/aside.php' ?>
 
 
     <div id="main">
 
         <h1>Search of:<?= $_POST['search'] ?></h1>
-<?php
-$posts = get_all_posts($db, null, null,$_POST['search']);
+        <?php
+        $posts = get_all_posts($db, null, null, $_POST['search']);
 
-if (!empty($posts) && mysqli_num_rows($posts) >= 1):
-    while ($post = mysqli_fetch_assoc($posts)):
-        ?>
+        if (!empty($posts) && mysqli_num_rows($posts) >= 1):
+            while ($post = mysqli_fetch_assoc($posts)):
+                ?>
                 <article class="entry_posts">
                     <a href="post-details.php?id=<?= $post['id'] ?>">
                         <h2><?= $post['title'] ?> </h2>
@@ -33,10 +28,10 @@ if (!empty($posts) && mysqli_num_rows($posts) >= 1):
                         <p><?= substr($post['description'], 0, 180) . "..." ?> </p>
                     </a>
                 </article>
-        <?php
-    endwhile;
-else:
-    ?>
+                <?php
+            endwhile;
+        else:
+            ?>
             <div class="error-alert">No posts at now</div>
 
         <?php endif ?>
